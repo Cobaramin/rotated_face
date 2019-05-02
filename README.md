@@ -1,7 +1,7 @@
 # Rotated face
 Auto rotate image web api with PCN (Progressive Calibration Networks)
 This project is implement PCN from [repo](https://github.com/siriusdemon/pytorch-PCN)
-& this [paper](https://arxiv.org/pdf/1804.06039.pdf)s
+& this [paper](https://arxiv.org/pdf/1804.06039.pdf)
 
 ### Getting Started
 ```
