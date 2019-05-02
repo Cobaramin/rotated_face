@@ -2,4 +2,4 @@ build:
   docker:
     web: web/Dockerfile
 run:
-  web: python run.py
+  web: gunicorn --bind 0.0.0.0:$PORT wsgi

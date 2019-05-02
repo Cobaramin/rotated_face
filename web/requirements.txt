@@ -2,3 +2,5 @@ opencv-python==4.1.0.25
 Flask==1.0.2
 Flask-RESTful==0.3.7
 jsonpickle==1.1
+gunicorn
+Werkzeug
