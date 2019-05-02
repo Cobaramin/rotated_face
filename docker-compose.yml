@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  web:
+    build: ./web
+    command: python run.py
+    volumes:
+      - ./web:/code
+    ports:
+      - 80:80
+    environment:
+      - FLASK_CONFIG=development
