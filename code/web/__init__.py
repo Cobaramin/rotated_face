@@ -8,7 +8,6 @@ import jsonpickle
 import werkzeug
 from flask import (Flask, Response, abort, jsonify, make_response, request,
                    send_file)
-from pcn import detect
 from web.errors import FaceNotFoundException
 from web.operations import get_img_orientation, rotate_image
 
