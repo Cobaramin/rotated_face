@@ -3,8 +3,8 @@ import numpy as np
 import cv2
 import torch
 
-from pcn.models import load_model
-from pcn.utils import Window, draw_face
+from face_algorithm.models import load_model
+from face_algorithm.utils import Window, draw_face
 
 
 

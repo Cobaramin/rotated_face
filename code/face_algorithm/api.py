@@ -1,9 +1,9 @@
 import cv2
 import numpy as np
 
-from pcn.models import load_model
-from pcn.utils import crop_face, draw_face
-from pcn.pcn import pcn_detect
+from face_algorithm.models import load_model
+from face_algorithm.utils import crop_face, draw_face
+from face_algorithm.pcn import pcn_detect
 
 
 nets = load_model()
