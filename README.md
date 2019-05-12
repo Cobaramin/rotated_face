@@ -15,6 +15,11 @@ and https://docs.docker.com/compose/install/ for docker-compose
 $ docker-compose build
 $ docker-compose up
 ```
+### Testing
+```shell
+source python-tests.sh
+```
+
 ### Usage
 #### Curl
 ```shell
