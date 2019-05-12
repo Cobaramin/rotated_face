@@ -7,4 +7,4 @@ services:
     volumes:
       - ./code:/code
     ports:
-      - 80:8000
+      - 8000:8000
