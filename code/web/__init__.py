@@ -2,7 +2,7 @@ from io import BytesIO
 
 import cv2
 import numpy as np
-from PIL import ExifTags, Image
+from PIL import Image
 
 import jsonpickle
 import werkzeug
@@ -10,6 +10,7 @@ from flask import (Flask, Response, abort, jsonify, make_response, request,
                    send_file)
 from pcn import detect
 from web.errors import FaceNotFoundException
+from web.operations import get_img_orientation, rotate_image
 
 app = Flask(__name__)
 
@@ -18,35 +19,6 @@ ALLOWED_EXTENSIONS = ['jpg', 'jpeg']
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
-
-# get image orientation depend on PCN (Progressive Calibration Networks)
-def get_img_orientation(img):
-    height, width = img.shape[:2]
-    faces = detect(img)
-    if not len(faces):
-        raise FaceNotFoundException('Cannot detect any face')
-    face = faces[0]
-    if int(face.angle) in range(-135, -45):  # right
-        return 8
-    elif int(face.angle) in range(-45, 45):  # up
-        return 1
-    elif int(face.angle) in range(45, 135):  # left
-        return 6
-    else:  # bottom
-        return 3
-
-
-# Image rotation
-def rotate_image(image: Image, code):
-    temp_img = image.copy()
-    if code == 3:
-        temp_img = temp_img.rotate(180, expand=True)
-    elif code == 6:
-        temp_img = temp_img.rotate(270, expand=True)
-    elif code == 8:
-        temp_img = temp_img.rotate(90, expand=True)
-    return temp_img
 
 # api entry point
 @app.route('/fix-orientation', methods=['POST'])
