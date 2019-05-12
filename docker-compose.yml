@@ -3,8 +3,8 @@ version: '3'
 services:
   web:
     build: ./web
-    command: gunicorn --bind 0.0.0.0:2222 wsgi
+    command: gunicorn --bind 0.0.0.0:8000 wsgi
     volumes:
       - ./web:/code
     ports:
-      - 80:2222
+      - 80:8000

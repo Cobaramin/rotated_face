@@ -1,0 +1,3 @@
+
+class FaceNotFoundException(Exception):
+    pass

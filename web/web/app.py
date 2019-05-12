@@ -9,22 +9,18 @@ import werkzeug
 from flask import (Flask, Response, abort, jsonify, make_response, request,
                    send_file)
 from pcn import detect
+from web.errors import FaceNotFoundException
 
 app = Flask(__name__)
 
 ALLOWED_EXTENSIONS = ['jpg', 'jpeg']
 
 
-class FaceNotFoundException(Exception):
-    pass
-
-
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
+
 # get image orientation depend on PCN (Progressive Calibration Networks)
-
-
 def get_img_orientation(img):
     height, width = img.shape[:2]
     faces = detect(img)
@@ -40,9 +36,8 @@ def get_img_orientation(img):
     else:  # bottom
         return 3
 
+
 # Image rotation
-
-
 def rotate_image(image: Image, code):
     temp_img = image.copy()
     if code == 3:
