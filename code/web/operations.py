@@ -10,8 +10,19 @@ face_orientations = {
     'right': 8
 }
 
-# get image orientation depend on PCN (Progressive Calibration Networks)
+
 def get_img_orientation(img):
+    """Get image orientation depend on PCN (Progressive Calibration Networks)
+
+    Args:
+        img (numpy.ndarray): The image file n-dimentaional array load from cv2.imread
+
+    Returns:
+        int: Image orientation exif code
+
+    Raises:
+        FaceNotFoundException: If an algorithm cannot detect a face.
+    """
     height, width = img.shape[:2]
     faces = detect(img)
     if not len(faces):
@@ -23,16 +34,25 @@ def get_img_orientation(img):
         return face_orientations['up']
     elif int(face.angle) in range(45, 135):
         return face_orientations['left']
-    else:  # bottom
+    else:
         return face_orientations['bottom']
 
-# Image rotation
+
 def rotate_image(image: Image, code):
+    """ Rotate image
+
+    Args:
+        image (PTL.Image): The PTL.Image object
+        code (int): Image orientation exif code
+
+    Returns:
+        image (PTL.Image): Rotated PTL.Image object
+    """
     temp_img = image.copy()
     if code == face_orientations['up']:
         temp_img = temp_img.rotate(180, expand=True)
     elif code == face_orientations['left']:
         temp_img = temp_img.rotate(270, expand=True)
-    elif code == face_orientations['right']:
+    elif code == face_orientations['right ']:
         temp_img = temp_img.rotate(90, expand=True)
     return temp_img
