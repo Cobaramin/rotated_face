@@ -49,10 +49,10 @@ def rotate_image(image: Image, code):
         image (PTL.Image): Rotated PTL.Image object
     """
     temp_img = image.copy()
-    if code == face_orientations['up']:
+    if code == face_orientations['bottom']:
         temp_img = temp_img.rotate(180, expand=True)
     elif code == face_orientations['left']:
         temp_img = temp_img.rotate(270, expand=True)
-    elif code == face_orientations['right ']:
+    elif code == face_orientations['right']:
         temp_img = temp_img.rotate(90, expand=True)
     return temp_img
