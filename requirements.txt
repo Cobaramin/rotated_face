@@ -1,6 +1,6 @@
 gunicorn==19.9.0
 jsonpickle==1.1
-opencv-python==4.1.0.25
+opencv-python==4.1.1.26
 pytest==4.5.0
 Flask==1.0.2
 Flask-RESTful==0.3.7
